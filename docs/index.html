@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ai-video-editを初めて使う方へ。Macへの導入から、日本語での編集依頼、プレビュー、完成動画の確認までを案内します。">
+  <meta name="color-scheme" content="light">
+  <title>はじめての ai-video-edit｜導入・使い方ガイド</title>
+  <style>
+    :root{--paper:#f6f5ef;--white:#fff;--ink:#172c32;--muted:#52676b;--line:#d9e2de;--green:#087b67;--pale:#e6f3ed;--orange:#bd5228;--gold:#f3cc78;--radius:20px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}a{color:#086e5d;text-underline-offset:4px}a:hover{color:#093f36}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #d96c32;outline-offset:4px}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3{line-height:1.45;letter-spacing:-.03em}h1{font-size:clamp(36px,4.6vw,60px);font-weight:800;margin-bottom:24px}h2{font-size:clamp(27px,3vw,36px);margin-bottom:16px}h3{font-size:21px;margin-bottom:12px}h4{font-size:17px;margin-bottom:10px}p{margin-bottom:18px}small,.small{font-size:13px;line-height:1.8}ul,ol{padding-left:1.4em}li+li{margin-top:7px}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;overflow-wrap:anywhere}p code,li code,dd code{background:#e8ede8;padding:2px 5px;border-radius:4px}.muted{color:var(--muted)}.nowrap{white-space:nowrap}.skip{position:fixed;left:16px;top:-90px;background:white;padding:12px;z-index:100}.skip:focus{top:10px}
+    .topbar{max-width:1440px;padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:auto;border-bottom:1px solid var(--line)}.brand{font-weight:800;font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:-.04em}.brand-mark{display:inline-grid;place-items:center;width:29px;height:29px;margin-right:9px;border-radius:8px;background:var(--green);color:white;font-size:15px;vertical-align:2px}.toplinks{display:flex;gap:24px;font-size:13px;align-items:center}.plain-button{background:transparent;border:0;color:var(--muted);padding:4px;text-decoration:underline;text-underline-offset:4px}.layout{max-width:1440px;margin:auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;padding:0 48px}.sidebar{align-self:start;position:sticky;top:28px;padding-top:38px}.nav-label,.eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:800;color:var(--green)}.sidebar ol{padding:0;list-style:none;margin:20px 0}.sidebar li{margin:0}.sidebar a{display:flex;gap:14px;color:var(--muted);text-decoration:none;padding:9px 0;font-size:14px}.sidebar a:hover{color:var(--green)}.sidebar .num{color:#788d88;font:12px/2 ui-monospace,monospace}.nav-note{font-size:12px;line-height:1.9;color:var(--muted);border-top:1px solid var(--line);padding-top:20px;margin-top:24px}.content{min-width:0;padding-bottom:64px}.hero{padding:62px 0 48px}.hero .eyebrow{margin-bottom:22px}.hero p.lead{max-width:650px;font-size:18px;line-height:1.95}.accent{color:var(--green)}.badge{display:inline-block;font-size:12px;padding:5px 12px;border:1px solid var(--line);border-radius:99px;background:#ffffff8c;margin:0 6px 9px 0}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 32px}.button{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:white;border:1px solid var(--green);border-radius:9px;padding:11px 19px;font-weight:700;text-decoration:none;line-height:1.5}.button:hover{background:#075e50;color:white}.button.secondary{background:transparent;color:var(--ink);border-color:var(--line)}.hero-strip{border-radius:var(--radius);background:var(--ink);color:white;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:center;padding:28px 30px}.strip-node small{display:block;color:#bdd1ca;font-size:11px;letter-spacing:.08em;margin-bottom:5px}.strip-node strong{font-size:17px}.strip-arrow{color:#79bda3;font-size:24px}.section{padding:48px 0;border-top:1px solid var(--line)}.section-label{font-size:12px;letter-spacing:.13em;color:var(--green);font-weight:800;margin-bottom:12px}.section-intro{max-width:730px;color:var(--muted);margin-bottom:26px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px;min-width:0}.card p:last-child,.note p:last-child,.step p:last-child{margin-bottom:0}.card-number{display:inline-block;font:12px ui-monospace,monospace;color:var(--green);margin-bottom:20px}.card .big{font-size:28px;font-weight:800;line-height:1.4;margin-bottom:12px}.card.highlight{background:var(--pale);border-color:#bbd5c7}.card .tag{display:inline-block;border-radius:5px;padding:3px 8px;background:#f1f3ef;font-size:11px;margin-top:12px}.mini-timeline{display:flex;gap:4px;align-items:center;margin:22px 0 15px;height:24px}.mini-timeline span{height:20px;border-radius:3px;background:#5eab91;flex:1}.mini-timeline .cut{background:repeating-linear-gradient(135deg,#fff,#fff 3px,#ceded5 3px,#ceded5 5px);flex:.3;height:14px}.short-frames{display:flex;gap:8px;margin:20px 0 15px}.short-frames span{height:64px;width:38px;background:#dceae1;border-radius:6px;border-bottom:13px solid #79ac97}.short-frames span:nth-child(2){background:#f0dfbb;border-color:#c99b4e}.short-frames span:nth-child(3){background:#d7e6ea;border-color:#6998a2}.note{border-left:3px solid var(--green);padding:16px 20px;background:#eaf1eb;margin:24px 0;border-radius:0 10px 10px 0;font-size:14px}.note.warm{background:#fbf1df;border-color:#c89334}.checklist{list-style:none;padding:0}.checklist li{position:relative;padding-left:27px}.checklist li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:bold}.step{position:relative;margin-top:22px;padding:30px 30px 30px 82px;border:1px solid var(--line);border-radius:var(--radius);background:white}.step-index{position:absolute;left:25px;top:29px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:white;background:var(--green);font-size:14px;font-weight:700}.step small.success{display:block;color:var(--green);font-weight:600;margin-top:12px}.codebox{border-radius:12px;overflow:hidden;margin:18px 0;background:#182c33;color:#e5f4ed;max-width:100%}.codehead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid #ffffff1a;font-size:11px;letter-spacing:.05em;color:#b5cfc5}.codebox pre{margin:0;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;tab-size:2}.codebox pre code{font-size:13px}.copy{flex-shrink:0;padding:4px 10px;color:inherit;border:1px solid currentColor;border-radius:6px;background:transparent;font-size:11px;line-height:1.6}.copy:hover{background:#ffffff19}.prompt{background:#edf5f0;color:#173c32;border:1px solid #c7ded0}.prompt .codehead{color:#2b715b;border-color:#c7ded0}.prompt pre{font-family:inherit;font-size:14px;line-height:1.9}.prompt .copy:hover{background:#dbece1}.flow{counter-reset:flow;list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:28px 0}.flow li{margin:0;padding:16px 14px;background:white;border:1px solid var(--line);border-radius:12px;font-size:12px}.flow li:before{counter-increment:flow;content:'0' counter(flow);display:block;font:12px ui-monospace,monospace;color:var(--green);margin-bottom:12px}.flow strong{font-size:14px;display:block;margin-bottom:8px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;padding:11px 12px;border:1px solid #b8ccc2;border-radius:8px;background:white;color:var(--ink);font-size:14px;min-width:0}.field textarea{resize:vertical;min-height:90px}.field.full{grid-column:1/-1}.builder{background:#e6f1e9;border:1px solid #b8d5c4;border-radius:var(--radius);padding:28px}.builder .prompt{background:white;margin-bottom:0}.builder .small{color:var(--muted)}details{background:white;border:1px solid var(--line);border-radius:12px;margin:12px 0;padding:0 20px}summary{cursor:pointer;font-weight:600;padding:17px 4px;font-size:15px}details .detail{padding:0 4px 18px;font-size:14px}details .detail p:last-child{margin-bottom:0}dl.files{margin:0;display:grid;grid-template-columns:120px 1fr;gap:12px 18px;font-size:14px}.files dt{font-weight:700}.files dd{margin:0;color:var(--muted)}.footer{border-top:1px solid var(--line);padding-top:28px;display:flex;gap:24px;justify-content:space-between;align-items:start;color:var(--muted);font-size:12px}.footer p{margin:0}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:20;background:var(--ink);color:white;padding:12px 22px;border-radius:10px;font-size:14px;box-shadow:0 6px 30px #0002;max-width:90vw}.toast:empty{display:none}
+    @media(max-width:1150px){.layout{grid-template-columns:175px minmax(0,1fr);gap:28px;padding:0 30px}.topbar{padding:22px 30px}.flow{grid-template-columns:1fr}.flow li{display:grid;grid-template-columns:30px 140px 1fr;gap:12px;align-items:baseline}.flow li:before,.flow strong{margin:0}.hero-strip{gap:12px;padding:24px}.strip-node strong{font-size:15px}.grid3{grid-template-columns:1fr}}
+    @media(max-width:800px){.layout{display:block;padding:0 22px}.topbar{padding:18px 22px}.toplinks{gap:14px}.sidebar{position:static;padding-top:22px}.nav-label,.nav-note{display:none}.sidebar ol{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0}.sidebar a{padding:4px 0;font-size:12px;gap:6px}.sidebar .num{font-size:10px}.hero{padding-top:38px}.hero p.lead{font-size:16px}.section{padding:36px 0}.grid2,.form-grid{grid-template-columns:1fr}.hero-strip{padding:24px 20px;grid-template-columns:1fr;gap:8px}.strip-node{display:flex;align-items:baseline;gap:14px}.strip-node small{min-width:58px;margin:0}.strip-arrow{display:none}.step{padding:26px 20px}.step h3{padding-left:43px;min-height:32px}.step-index{left:20px;top:24px}.flow li{display:block}.flow li:before{float:left;margin:2px 12px 0 0}.flow strong{margin-bottom:6px}.flow li span{display:block;margin-left:42px}.builder{padding:20px}.footer{display:block}.footer p+p{margin-top:12px}.card{padding:23px}.field.full{grid-column:auto}}
+    @media(max-width:420px){.brand{font-size:17px}.brand-mark{width:25px;height:25px;margin-right:5px}.toplinks{font-size:11px;gap:10px}.toplinks .print{display:none}.layout{padding:0 16px}.topbar{padding:16px}.hero-actions{flex-direction:column}.hero-strip{padding:22px 16px}.strip-node strong{font-size:14px}.codebox pre{padding:14px}.codehead{padding:10px 12px}.step{padding:24px 16px}.step-index{left:16px}.files{grid-template-columns:85px 1fr!important;gap:10px!important}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{@page{size:A4;margin:16mm}body{background:white;font-size:10pt;line-height:1.65}.topbar{padding:0 0 12px}.layout{display:block;padding:0}.sidebar,.toplinks,.hero-actions,.copy,.toast,.builder form{display:none!important}.content{padding:0}.hero{padding:24px 0}.hero h1{font-size:30pt}.hero p.lead{font-size:12pt}.section{padding:22px 0}h2{font-size:20pt}h3{font-size:14pt}.card,.step,.note,.codebox,details{break-inside:avoid}.card,.step{padding:18px}.step h3{padding-left:40px}.step-index{top:17px;left:18px}.hero-strip{background:#edf3ef;color:var(--ink)}.strip-node small{color:var(--muted)}.codebox{background:#f1f4f2;color:var(--ink);border:1px solid var(--line)}.codehead{color:var(--muted);border-bottom:1px solid var(--line)}.codebox pre code{font-size:9pt}.grid3{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.flow li{padding:10px}.builder{background:#f5f8f5}.section-label{margin-bottom:6px}a{color:inherit}.footer{font-size:9pt}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">本文へ移動</a>
+  <header class="topbar">
+    <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">▶</span>ai-video-edit</a>
+    <div class="toplinks"><button class="plain-button print" type="button" id="print-guide" hidden>印刷 / PDF保存</button><a href="https://github.com/mq-org/ai-video-edit">GitHub ↗</a></div>
+  </header>
+  <div class="layout">
+    <nav class="sidebar" aria-label="ガイドの目次">
+      <div class="nav-label">Getting started</div>
+      <ol>
+        <li><a href="#about"><span class="num">01</span>できること</a></li>
+        <li><a href="#prepare"><span class="num">02</span>準備するもの</a></li>
+        <li><a href="#install"><span class="num">03</span>インストール</a></li>
+        <li><a href="#first"><span class="num">04</span>最初の動画を作る</a></li>
+        <li><a href="#request"><span class="num">05</span>依頼文を作る</a></li>
+        <li><a href="#finish"><span class="num">06</span>確認・修正・保存</a></li>
+        <li><a href="#next"><span class="num">07</span>2回目からの使い方</a></li>
+        <li><a href="#help"><span class="num">08</span>困ったとき</a></li>
+      </ol>
+      <p class="nav-note">はじめての方向け<br>Mac / Apple Silicon 標準手順<br><br>確認日：2026年10月30日<br>このHTMLは単体で保存・共有できます。</p>
+    </nav>
+    <main class="content" id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">A practical guide to AI video editing</p>
+        <h1 id="hero-title">作りたい動画を、<br><span class="accent">言葉で伝える。</span></h1>
+        <p class="lead">ai-video-edit は、AIに日本語で相談しながら使う動画編集ツール集です。素材を用意したら、残したい内容や仕上がりを伝えるところから始めましょう。</p>
+        <div><span class="badge">はじめての導入から完成まで</span><span class="badge">日本語の動画に対応</span><span class="badge">コードの手書きは不要</span></div>
+        <div class="hero-actions"><a class="button" href="#install">導入手順へ進む <span aria-hidden="true">　↓</span></a><a class="button secondary" href="#request">依頼文の例を見る</a></div>
+        <div class="hero-strip" aria-label="素材を用意し、AIと相談して、完成動画を書き出す">
+          <div class="strip-node"><small>INPUT</small><strong>手元の動画素材</strong></div><span class="strip-arrow" aria-hidden="true">→</span>
+          <div class="strip-node"><small>EDIT</small><strong>AIと相談して編集</strong></div><span class="strip-arrow" aria-hidden="true">→</span>
+          <div class="strip-node"><small>OUTPUT</small><strong>字幕付きの完成動画</strong></div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-label">01 / WHAT YOU CAN MAKE</div><h2>まずは、この2つから。</h2>
+        <p class="section-intro">編集の入口はClaude Codeとの会話です。AIが素材を調べ、編集計画を作り、このツールでカット・字幕・書き出しを実行します。</p>
+        <div class="grid2">
+          <article class="card highlight"><span class="card-number">STYLE A · 1素材 → 1本</span><h3>収録を、見やすい1本に。</h3><p>講座・解説・インタビューなどの言い直しや長い間を整え、シンプルな字幕を付けます。</p><div class="mini-timeline" aria-hidden="true"><span></span><span class="cut"></span><span></span><span class="cut"></span><span></span><span></span></div><p class="small">例：30分の講座 → 内容を保って自然な長さに<br>完成尺は素材と編集方針で変わります。</p><span class="tag">横型 / 縦型 / 正方形</span></article>
+          <article class="card"><span class="card-number">STYLE B · 1素材 → 複数本</span><h3>見どころを、縦型ショートに。</h3><p>長い動画から話題を選び、色・縁取り・動きのあるテレビ風のテロップを付けます。</p><div class="short-frames" aria-hidden="true"><span></span><span></span><span></span></div><p class="small">例：対談 → 1本で話が伝わるショートを3本<br>標準の目安は1本30〜90秒です。</p><span class="tag">縦型 1080 × 1920 / Type-Tテロップ</span></article>
+        </div>
+        <p class="note"><strong>細かな希望も、会話で指定できます。</strong><br>「8〜15分だけ使う」「字幕は別ファイルで」「実演は全部残す」など。BGM追加、複数素材の統合、複雑な合成、話者の自動追尾は標準機能の対象外です。希望があれば、追加作業や代替案を相談してください。</p>
+      </section>
+
+      <section class="section" id="prepare">
+        <div class="section-label">02 / BEFORE YOU START</div><h2>準備するものを確認。</h2>
+        <div class="grid2">
+          <div class="card"><h3>パソコンと素材</h3><ul class="checklist"><li><strong>Apple SiliconのMac</strong><br><span class="small muted">M1・M2・M3など、Apple製チップ搭載機。「 → このMacについて」で確認できます。</span></li><li><strong>インターネット接続</strong><br><span class="small muted">ツールの導入、AIとの会話、初回の音声認識モデル取得に使います。</span></li><li><strong>編集してよい動画と空き容量</strong><br><span class="small muted">まずは短いMP4がおすすめ。元素材・中間ファイル・完成品を置ける余裕を用意します。</span></li></ul><p class="small muted">この手順はHomebrewがサポートするmacOSを前提にしています。対応OSは<a href="https://brew.sh/">Homebrew公式</a>で確認してください。</p></div>
+          <div class="card"><h3>アカウントと費用</h3><ul class="checklist"><li><strong>Claude Codeを使えるアカウント</strong><br><span class="small muted">対応するClaudeの契約、またはClaude Console等の利用環境が必要です。最新の対象は<a href="https://code.claude.com/docs/en/quickstart">公式ガイド</a>を確認してください。</span></li><li><strong>ツール本体はMITライセンス</strong><br><span class="small muted">ai-video-editの利用料と、AIサービスの利用料金は別です。本体のライセンス料はありません。</span></li><li><strong>標準手順はローカル文字起こし</strong><br><span class="small muted">音声認識をMacで行うため、文字起こしAPIの従量料金はかかりません。Claude Codeの利用料金は別途必要です。</span></li></ul><p class="small muted">公開リポジトリのダウンロードに、GitHubアカウントは必要ありません。</p></div>
+        </div>
+        <div class="note warm"><strong>「ローカル文字起こし」の範囲</strong><p>音声認識はMac内で動きます。一方、Claude Codeが分析する文字起こしや画像などは、利用するAIサービスへ送信され得ます。外部に渡せない素材は、所属組織の方針と<a href="https://code.claude.com/docs/en/data-usage">Claude Codeのデータ利用方針</a>を確認してから扱ってください。</p></div>
+        <details><summary>Intel Mac・Linux・Windowsを使っている場合</summary><div class="detail"><p>ローカル音声認識のmlx-whisperはApple Silicon向けです。Intel Macは下記セットアップの <code>--with-local</code> を外し、API文字起こし、または既存の文字起こしを利用してください。APIにはOpenAI側の設定と料金が必要で、音声が外部サービスに送信されます。</p><p>Linuxは<a href="https://github.com/mq-org/ai-video-edit#セットアップを自分で行う場合">READMEの手動セットアップ</a>を参照してください。Linuxの確認範囲はテストと合成素材の書き出しで、Windowsは未検証です。このガイドのコマンドをそのままWindowsへ貼り付けないでください。</p></div></details>
+      </section>
+
+      <section class="section" id="install">
+        <div class="section-label">03 / ONE-TIME SETUP</div><h2>最初の1回だけ、道具を準備。</h2>
+        <p class="section-intro">以下は上から順に進めます。すでに導入済みの項目は、動作を確認して次へ進んでください。保存先はホームフォルダ内の <code>projects/ai-video-edit</code> に統一します。</p>
+        <div class="note"><strong>このページの読み方</strong><br>濃い色の「ターミナルに貼る」はMacへの操作指示。薄い緑色の「Claude Codeに送る」はAIへの依頼文です。コピーボタンで本文だけをコピーできます。</div>
+        <article class="step"><span class="step-index">1</span><h3>ターミナルを開く</h3><p><strong>⌘ Command ＋ Space</strong> を押して「ターミナル」と入力し、Returnで開きます。ここにコマンドを貼り付け、Returnを押して実行します。</p><p class="small muted">コマンドは1つの枠ずつ実行してください。文字が流れている間は完了を待ちます。パスワード入力では文字も「●」も表示されません。そのままMacのログインパスワードを入力してReturnを押します。</p></article>
+        <article class="step"><span class="step-index">2</span><h3>Homebrewを用意する</h3><p>Homebrewは、必要な道具をまとめて導入する仕組みです。まず確認します。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 導入済みか確認</span></div><pre><code>brew --version</code></pre></div>
+          <p>バージョン番号が出れば手順3へ。<code>command not found</code> と出た場合は、<a href="https://brew.sh/">公式サイト</a>のインストールコマンドを実行します。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 未導入の場合だけ</span></div><pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre></div>
+          <p><strong>最後に表示される「Next steps」の指示も実行</strong>してください。ターミナルからHomebrewを使えるようにする設定です。開発ツールのインストール画面が出たら、案内に従って完了を待ちます。</p><small class="success">完了の目印：新しいターミナルで brew --version が表示される。</small>
+        </article>
+        <article class="step"><span class="step-index">3</span><h3>Claude CodeとGitを入れる</h3><p>Claude CodeはAIとの会話用、Gitはこのツールの取得と更新用です。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る</span></div><pre><code>brew install git
+brew install --cask claude-code</code></pre></div>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · インストール確認</span></div><pre><code>git --version
+claude --version</code></pre></div>
+          <small class="success">完了の目印：両方のバージョン番号が表示される。</small><p class="small muted">この手順は<a href="https://code.claude.com/docs/en/setup">Claude Code公式のHomebrew導入方法</a>を使用します。別の方法でClaude Codeを導入済みなら、重ねてインストールする必要はありません。</p>
+        </article>
+        <article class="step"><span class="step-index">4</span><h3>ai-video-editをダウンロードする</h3><p>次の2行を実行すると、決まった場所にフォルダが作られます。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る</span></div><pre><code>mkdir -p "$HOME/projects"
+git clone https://github.com/mq-org/ai-video-edit.git "$HOME/projects/ai-video-edit"</code></pre></div>
+          <p class="small muted"><code>$HOME</code> は、あなたのホームフォルダを指します。そのままコピーして使えます。すでに同じフォルダがある場合は削除せず、<a href="#help-existing">困ったとき</a>を確認してください。</p>
+        </article>
+        <article class="step"><span class="step-index">5</span><h3>動画編集の道具をまとめて入れる</h3><p>Apple SiliconのMacでは、次の1行で編集とローカル文字起こしの準備をします。初回はダウンロードが多いため、完了まで待ちます。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · Apple Silicon用</span></div><pre><code>bash "$HOME/projects/ai-video-edit/scripts/setup.sh" --with-local</code></pre></div>
+          <p class="small muted">FFmpeg、Python、文字起こし用ライブラリなどが導入されます。字幕用フォントは本体に同梱されています。音声認識モデルは、最初の文字起こし時に取得されます。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 準備を確認</span></div><pre><code>"$HOME/projects/ai-video-edit/.venv/bin/python" "$HOME/projects/ai-video-edit/scripts/check_env.py"</code></pre></div>
+          <small class="success">完了の目印：「編集の必須項目はOK」と表示される。</small><p class="small muted">ローカル文字起こしを使う場合、OpenAI APIの「任意・未導入」は問題ありません。mlx-whisperが使える状態かも確認してください。</p>
+        </article>
+        <article class="step"><span class="step-index">6</span><h3>このフォルダでClaude Codeを起動する</h3><p>次のコマンドを使うと、編集用のフォルダを作業場所として起動できます。</p>
+          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 毎回このコマンドで起動</span></div><pre><code>(cd "$HOME/projects/ai-video-edit" &amp;&amp; claude)</code></pre></div>
+          <p>初回は画面の案内に従ってログインします。ブラウザが開いたら認証を済ませ、ターミナルへ戻ります。フォルダの信頼確認が出たら、場所が <code>projects/ai-video-edit</code> であることを確認します。</p><small class="success">完了の目印：Claude Codeで文章を入力できる。</small><p class="small muted">ログインし直すときはClaude Code内で <code>/login</code>、操作案内は <code>/help</code>。詳細は<a href="https://code.claude.com/docs/en/quickstart">公式クイックスタート</a>を参照してください。</p>
+        </article>
+      </section>
+
+      <section class="section" id="first">
+        <div class="section-label">04 / YOUR FIRST VIDEO</div><h2>素材を渡して、希望を伝える。</h2>
+        <p class="section-intro">ここからはAIとの会話が中心です。編集の設定ファイルはAIが用意します。まずは短いプレビューを見て、字幕とカットのテンポを合わせましょう。</p>
+        <article class="card"><h3>① 動画の場所を伝える</h3><p>Finderで動画を選び、<strong>⌥ Option ＋ ⌘ Command ＋ C</strong> でファイルのパスをコピーします。下の依頼文にある「ここに動画のパス」を、コピーした内容に置き換えてください。</p><p class="small muted">パスはファイルの住所です。例：<code>/Users/あなたの名前/Movies/lesson.mp4</code>。名前だけを伝えるより、どの素材を使うか確実に分かります。元動画はそのまま保管してください。</p></article>
+        <h3 style="margin-top:28px">② 最初の依頼を送る</h3>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 1本仕上げの例</span></div><pre>このプロジェクトのCLAUDE.mdとreferences/workflow.mdを読んで、動画編集を進めてください。
+
+素材は「ここに動画のパス」です。
+30分程度の講座を、横型の1本の動画に整えたいです。
+説明と実演は省かず、言い直しと不要な長い間をカットしてください。
+白文字のシンプルな字幕を付け、完成尺は自然な長さにしてください。
+文字起こしはローカルで行います。APIへの切り替えは事前に相談してください。
+
+最初に、不足している希望をまとめてヒアリングしてください。
+編集計画を確認した後、15〜30秒のプレビューを見てから全編を作りたいです。
+完成品はoutput/内に案件用フォルダを作って保存し、最後に保存先を教えてください。</pre></div>
+        <h3 style="margin-top:28px">③ 質問に答え、プレビューを確認する</h3>
+        <ol class="flow"><li><strong>ヒアリング</strong><span>用途、視聴者、長さ、字幕などを確認。</span></li><li><strong>素材を分析</strong><span>音声を文字起こしし、映像の状態を調べる。</span></li><li><strong>編集計画</strong><span>使う区間、削る理由、字幕を整理。</span></li><li><strong>プレビュー</strong><span>短い試作で字幕とテンポを合わせる。</span></li><li><strong>本書き出し</strong><span>全編を作成し、完成品の場所を案内。</span></li></ol>
+        <p>分からない項目には「おすすめを提案して」「字幕の見た目はお任せ」と答えて大丈夫です。残したい箇所は「手元の実演は倍速にせず全部残す」のように具体的に伝えます。</p>
+        <div class="note"><strong>AIから操作の許可を求められたら</strong><br>対象の素材や保存先、実行内容が依頼に沿っているか確認します。意味が分からなければ「この操作をすると何が変わりますか」と聞けます。文字起こしや書き出しには、素材の長さとMacの性能に応じて時間がかかります。</div>
+        <details><summary>まだ素材がないので、動作だけ試したい</summary><div class="detail"><p>次の依頼なら、無地の映像・テスト音・架空の字幕で書き出しを試せます。音声認識のテストではありません。</p><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る</span></div><pre>CLAUDE.mdとreferences/workflow.mdを読んでください。
+scripts/make_demo.pyでデモ素材を作り、1本仕上げの編集計画を作成・確認してください。
+架空の字幕を付けた15秒のプレビューを書き出し、保存先を教えてください。
+デモには既存の文字起こしがあるので、音声認識やAPI送信は不要です。</pre></div></div></details>
+      </section>
+
+      <section class="section" id="request">
+        <div class="section-label">05 / WRITE YOUR BRIEF</div><h2>あなたの動画の、依頼文を作る。</h2>
+        <p class="section-intro">選択すると、下の文章が変わります。コピーしてClaude Codeに送り、会話の出発点にしてください。このフォームは依頼文を作るだけで、動画のアップロードや編集の実行は行いません。入力内容も送信しません。</p>
+        <div class="builder">
+          <form id="brief-form">
+            <div class="form-grid">
+              <div class="field full"><label for="source">動画のパス</label><input id="source" type="text" placeholder="Finderでコピーしたパスを貼り付け" autocomplete="off"></div>
+              <div class="field"><label for="style">作りたい動画</label><select id="style"><option value="single">1本に整える</option><option value="shorts">複数の縦型ショート</option><option value="extract">指定した区間を抜き出す</option></select></div>
+              <div class="field"><label for="audience">用途・見る人</label><input id="audience" type="text" placeholder="例：初めて学ぶ人向けの講座"></div>
+              <div class="field"><label for="shape">画面の形</label><select id="shape"><option value="横型（16:9）">横型（16:9）</option><option value="縦型（9:16）">縦型（9:16）</option><option value="正方形（1:1）">正方形（1:1）</option></select></div>
+              <div class="field"><label for="captions">字幕の見た目</label><select id="captions"><option value="simple">白文字のシンプルな字幕</option><option value="typet">テレビ風のType-Tテロップ（ショート用）</option><option value="sidecar">焼き込まず、SRTを別ファイルで</option><option value="none">字幕なし</option></select></div>
+              <div class="field"><label for="pace">カットの強さ</label><select id="pace"><option>自然さ優先。長い間と言い直しを整理</option><option>テンポ優先。ただし説明は省かない</option><option>最小限。指定箇所以外はなるべく残す</option></select></div>
+              <div class="field"><label for="length">本数・長さ・使う区間</label><input id="length" type="text" placeholder="例：1本、自然な長さ / 3本、各60秒"></div>
+              <div class="field full"><label for="keep">残したい内容・正しい用語など</label><textarea id="keep" placeholder="例：実演は全部残す。「エーアイ」は「AI」と表記。"></textarea></div>
+            </div>
+            <p class="small" style="margin:16px 0 0">このフォームはApple Siliconでのローカル文字起こしを指定します。違う環境なら、送る前にその行を変更してください。Type-Tは縦型ショート向けのため、組み合わせは自動で調整します。</p>
+          </form>
+          <noscript><p>JavaScriptが無効のため、下の例文を直接編集して使ってください。</p></noscript>
+          <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · あなたの依頼文</span></div><pre id="generated-prompt" tabindex="0">CLAUDE.mdとreferences/workflow.mdを読んで、動画編集を進めてください。
+素材は「ここに動画のパス」です。1本に整えたいです。
+横型で、白文字のシンプルな字幕を付けてください。
+長い間と言い直しを整理し、説明は残してください。
+文字起こしはローカルで行い、APIへの切り替えは事前に相談してください。
+まず不足する希望をヒアリングし、短いプレビューを見てから全編を作ってください。
+完成品はoutput/内に案件用フォルダを作って保存し、保存先を教えてください。</pre></div>
+        </div>
+        <details><summary>ショートを依頼する例文も見たい</summary><div class="detail"><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 見どころを3本に</span></div><pre>CLAUDE.mdとreferences/workflow.mdを読んでください。
+素材「ここに動画のパス」から、初めて見る人向けの縦型ショートを3本作りたいです。
+1本30〜60秒を目安に、結論まで1本で理解できる話題を選んでください。
+1080×1920、テレビ風のType-Tテロップで仕上げたいです。
+文字起こしはローカルで行います。最初に希望を確認し、候補の話題と切り出す理由を提案してください。
+まず代表1本のプレビューを見てから、残りを制作してください。
+完成品はoutput/内に保存し、保存先を教えてください。</pre></div></div></details>
+      </section>
+
+      <section class="section" id="finish">
+        <div class="section-label">06 / REVIEW &amp; FINISH</div><h2>音を聞いて、仕上がりを確認。</h2>
+        <p class="section-intro">AIが案内したMP4をFinderから開き、QuickTime Playerなどで再生します。プレビューで見た範囲に加え、完成後は全編を確認してください。</p>
+        <div class="grid3"><div class="card"><span class="card-number">CHECK 01</span><h3>言葉と字幕</h3><p class="small">人名・専門用語の誤字はないか。字幕が画面からはみ出さず、読み切れる速さか。</p></div><div class="card"><span class="card-number">CHECK 02</span><h3>音と継ぎ目</h3><p class="small">語尾が切れていないか。カット前後の音が自然か。声が小さすぎたり、左右で偏ったりしていないか。</p></div><div class="card"><span class="card-number">CHECK 03</span><h3>話の流れ</h3><p class="small">説明や実演が必要以上に省かれていないか。元の発言と違う意味になっていないか。</p></div></div>
+        <h3 style="margin-top:30px">直したいところは、具体的に伝える</h3>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 修正の例</span></div><pre>いま作ったプレビューを見ました。
+・完成動画の0分12秒付近で、話し始めの音が少し切れています。カットを緩めてください。
+・字幕を少し小さくし、下端から離してください。
+・「エーアイ」は「AI」に直してください。
+いまの版は残して、新しいファイル名でプレビューを作ってください。</pre></div>
+        <p class="small muted">時刻は「元素材の時刻」か「完成動画の時刻」かを添えると確実です。問題がなければ「この仕上がりで全編を書き出してください」と伝えます。</p>
+        <article class="card"><h3>保存されるファイル</h3><dl class="files"><dt>MP4</dt><dd>再生・共有に使う完成動画。<code>*.preview.mp4</code> は確認用の試作です。</dd><dt>SRT / ASS</dt><dd>1本仕上げで字幕を有効にしたときの字幕ファイル。SRTは字幕の別納品、ASSは表示設定を含む字幕データです。</dd><dt>report.json</dt><dd>1本仕上げの検査レポート。通常はAIが内容を確認します。</dd><dt>data/</dt><dd>文字起こし、編集計画、中間データなど。再編集に使います。</dd><dt>output/</dt><dd>このガイドで指定する完成品の保存先。案件名ごとにまとめます。</dd></dl></article>
+        <p class="note"><strong>最後は保存先を確認。</strong><br>Finderで場所が分からなければ「完成品のフォルダをFinderで開いて」とAIに頼めます。制作データは公開GitHubへ自動保存されません。必要なものは自分のバックアップ先へコピーしてください。YouTubeなどへの投稿は、完成後に別途行います。</p>
+      </section>
+
+      <section class="section" id="next">
+        <div class="section-label">07 / NEXT TIME</div><h2>2回目からは、起動して相談。</h2>
+        <p>インストールを繰り返す必要はありません。ターミナルで次を実行し、新しい素材と希望を伝えます。</p>
+        <div class="codebox"><div class="codehead"><span>ターミナルに貼る · Claude Codeを起動</span></div><pre><code>(cd "$HOME/projects/ai-video-edit" &amp;&amp; claude)</code></pre></div>
+        <p>以前の会話を続ける場合は、Claude Code内で <code>/resume</code> を入力して会話を選びます。新しい会話で再編集する場合は、案件名や編集計画の場所を伝えてください。</p>
+        <details><summary>ツールを最新版へ更新したい</summary><div class="detail"><p>進行中の書き出しが終わってから、別のターミナルで実行します。このガイドのHomebrew方式で導入したClaude Codeも更新できます。</p><div class="codebox"><div class="codehead"><span>ターミナルに貼る · 更新</span></div><pre><code>git -C "$HOME/projects/ai-video-edit" pull --ff-only
+brew upgrade claude-code
+bash "$HOME/projects/ai-video-edit/scripts/setup.sh" --with-local</code></pre></div><p>ローカルの変更があってGitが止まった場合は、エラーをAIに見せてください。既存フォルダを消したり、変更を強制的に破棄したりする必要はありません。</p></div></details>
+      </section>
+
+      <section class="section" id="help">
+        <div class="section-label">08 / TROUBLESHOOTING</div><h2>つまずいたら、ここを確認。</h2>
+        <p class="section-intro">エラーが出ても、最初からやり直す前に原因を確認できます。画面の文章をそのままAIへ伝えると、対処しやすくなります。</p>
+        <details><summary>brew: command not found と出る</summary><div class="detail"><p>Homebrewのインストール末尾にある「Next steps」を実行したか確認してください。新しいターミナルを開き直して <code>brew --version</code> を試します。まだ使えなければ、<a href="https://docs.brew.sh/Installation">公式の導入案内</a>とインストール時の表示を確認します。</p></div></details>
+        <details><summary>git / claude: command not found と出る</summary><div class="detail"><p>手順3がエラーなく完了したか確認し、新しいターミナルでバージョン確認をやり直します。Homebrew自体が使えない場合は、先にその問題を解決してください。Claude Codeのログインと、コマンドのインストールは別の手順です。</p></div></details>
+        <details id="help-existing"><summary>「フォルダが既にある」「No such file」と出る</summary><div class="detail"><p>すでに取得済みなら、同じ場所への <code>git clone</code> は不要です。Finderの「移動 → フォルダへ移動」で <code>~/projects/ai-video-edit</code> を開き、README.mdやscriptsフォルダがあるか確認します。</p><p>別の場所へ取得した場合は、コマンド内の保存先をその場所に合わせます。名前が同じでも中身が別のフォルダなら、削除せず、別名で取得する方法を相談してください。</p></div></details>
+        <details><summary>ローカル文字起こしが使えない</summary><div class="detail"><p>Apple SiliconのMacか、<code>setup.sh --with-local</code> が完了したかを確認します。手順5の環境チェック結果をAIに伝えてください。Intel MacやLinuxではAPIまたは既存の文字起こしを選びます。APIへの切り替えには外部送信と料金が伴います。</p></div></details>
+        <details><summary>文字起こし・書き出しが終わらないように見える</summary><div class="detail"><p>初回の文字起こしではモデルのダウンロードが入ります。長い素材や高解像度の動画は処理にも時間がかかります。「現在の処理とログを確認して、進行しているか教えて」とAIに頼んでください。処理中に同じ書き出しを重複して開始しないようにします。</p></div></details>
+        <details><summary>素材が見つからない・読み取れない</summary><div class="detail"><p>Finderで動画を選び直し、Option＋Command＋Cでパスをコピーします。クラウド上にしかないファイルは、まずMacへダウンロードしてください。読み取り権限の確認が出た場合は対象フォルダを確認します。</p></div></details>
+        <details><summary>「未確認の計画」「出力が既に存在する」で止まる</summary><div class="detail"><p>AIに「カット・字幕・出力設定を確認したうえで計画を確定して」と伝えます。確認済みの印だけを変更する必要はありません。出力済みなら「前の版を残して、v2という別名で書き出して」と依頼できます。</p></div></details>
+        <details><summary>字幕の誤字やカットの違和感を直したい</summary><div class="detail"><p>正しい表記と、どの動画の何分何秒かを伝えます。「この間は実演を見せる時間なので残す」「『株式会社サンプル』が正式名称」のような情報が有効です。音声認識も編集判断も、素材ごとの確認が必要です。</p></div></details>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · エラーを相談</span></div><pre>ai-video-editの「ここに手順名」で止まりました。
+環境は「Macのチップ名 / macOSのバージョン」です。
+実行した内容とエラーを下に貼ります。
+原因を調べ、既存の素材や編集データを残したまま、次に行う操作を教えてください。
+
+【実行した内容】
+ここに貼り付け
+
+【エラー】
+ここに貼り付け</pre></div>
+        <p class="small muted">APIキーやパスワードは貼り付けないでください。公開の<a href="https://github.com/mq-org/ai-video-edit/issues">GitHub Issues</a>へ相談する場合は、個人情報や非公開の文字起こしを取り除いてください。</p>
+      </section>
+      <footer class="footer"><p><strong>ai-video-edit / はじめての導入・使い方ガイド</strong><br>2026年10月30日確認 · コード・本ガイド：MIT / 同梱フォント：各OFL<br>このページはHTML単体で表示できます。コピー・依頼文作成はブラウザ内で動作します。</p><p><a href="https://github.com/mq-org/ai-video-edit">リポジトリ</a> · <a href="https://github.com/mq-org/ai-video-edit/blob/main/README.md">README</a><br><a href="https://github.com/mq-org/ai-video-edit/blob/main/references/workflow.md">詳しい制作フロー</a> · <a href="#main">ページの先頭へ ↑</a></p></footer>
+    </main>
+  </div>
+  <div class="toast" role="status" aria-live="polite" id="toast"></div>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    let toastTimer;
+    function notify(message) { $('toast').textContent = message; clearTimeout(toastTimer); toastTimer = setTimeout(() => { $('toast').textContent = ''; }, 3200); }
+    async function copyText(text) {
+      try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (_) { /* file://などの制約下では選択コピーを使う */ }
+      const focused = document.activeElement;
+      const area = document.createElement('textarea'); area.value = text; area.setAttribute('readonly', ''); area.style.cssText = 'position:fixed;left:-9999px;top:0'; document.body.appendChild(area); area.select();
+      let copied = false; try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+      area.remove(); if (focused && focused.focus) focused.focus(); return copied;
+    }
+    document.querySelectorAll('.codebox').forEach(box => {
+      const button = document.createElement('button'); button.type = 'button'; button.className = 'copy'; button.textContent = 'コピー';
+      button.setAttribute('aria-label', box.querySelector('.codehead span').textContent + 'をコピー');
+      button.addEventListener('click', async () => { const ok = await copyText(box.querySelector('pre').textContent.trim()); notify(ok ? 'コピーしました。指定の場所に貼り付けてください。' : 'コピーできませんでした。本文を選択してコピーしてください。'); });
+      box.querySelector('.codehead').appendChild(button);
+    });
+    function updateBrief(event) {
+      const style = $('style'), shape = $('shape'), captions = $('captions');
+      if (event && event.target === style) {
+        if (style.value === 'shorts') { shape.value = '縦型（9:16）'; captions.value = 'typet'; }
+        else if (captions.value === 'typet') { captions.value = 'simple'; }
+      }
+      if (event && event.target === captions && captions.value === 'typet') { style.value = 'shorts'; shape.value = '縦型（9:16）'; }
+      if (event && event.target === shape && shape.value !== '縦型（9:16）' && style.value === 'shorts') { shape.value = '縦型（9:16）'; notify('縦型ショートは9:16で作成します。'); }
+      const styles = {single:'1本の見やすい動画に整えたいです。',shorts:'見どころを選び、複数の縦型ショートにしたいです。',extract:'指定する区間を抜き出して、1本の動画にしたいです。'};
+      const subtitles = {simple:'白文字のシンプルな字幕を付けてください。',typet:'テレビ風のType-Tテロップを付けてください。',sidecar:'字幕は映像に焼き込まず、SRTを別ファイルで納品してください。',none:'字幕は付けません。'};
+      const lines = ['このプロジェクトのCLAUDE.mdとreferences/workflow.mdを読んで、動画編集を進めてください。','',`素材は「${$('source').value.trim() || 'ここに動画のパス'}」です。`,styles[style.value],`用途・見る人：${$('audience').value.trim() || '最初に相談して決めたいです。'}`,`画面：${shape.value}。`,subtitles[captions.value],`カット方針：${$('pace').value}。`,`本数・長さ・使用区間：${$('length').value.trim() || (style.value === 'extract' ? '使う区間の開始・終了時刻を、最初に確認してください。' : style.value === 'shorts' ? '候補を提案し、本数を確認してください。1本30〜90秒が目安です。' : '1本。内容を保った自然な長さで。')}`];
+      if ($('keep').value.trim()) lines.push(`残したい内容・表記など：${$('keep').value.trim()}`);
+      lines.push('','文字起こしはローカルで行います。APIへの切り替えは事前に相談してください。','最初に不足している希望をまとめてヒアリングしてください。','編集計画を確認した後、' + (style.value === 'shorts' ? '代表1本のプレビューを見てから、残りを制作してください。' : '15〜30秒のプレビューを見てから全編を作ってください。'),'完成品はoutput/内に案件用フォルダを作って保存し、最後に保存先を教えてください。');
+      $('generated-prompt').textContent = lines.join('\n');
+    }
+    $('brief-form').addEventListener('input', updateBrief);
+    $('brief-form').addEventListener('submit', event => event.preventDefault());
+    updateBrief();
+    const printButton = $('print-guide'); printButton.hidden = false;
+    printButton.addEventListener('click', () => window.print());
+    let closedDetails = [];
+    window.addEventListener('beforeprint', () => { closedDetails = [...document.querySelectorAll('details:not([open])')]; closedDetails.forEach(el => { el.open = true; }); });
+    window.addEventListener('afterprint', () => { closedDetails.forEach(el => { el.open = false; }); closedDetails = []; });
+  </script>
+</body>
+</html>

@@ -24,6 +24,7 @@
 ## 参照先
 
 - `README.md`：導入と利用例。
+- `docs/index.html`：一般利用者向けの導入・使い方ガイド。コピー可能なコマンド、依頼文作成フォーム、トラブル対処。
 - `references/workflow.md`：初回ヒアリング、計画、プレビュー、制作、納品。
 - `references/editing-guide.md`：カット・字幕・音声・レイアウト・検収の知見。
 - `references/requirements.md`：実装範囲、既知の限界、開発時の確認事項。
