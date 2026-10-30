@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ai-video-editを初めて使う方へ。Macへの導入から、日本語での編集依頼、プレビュー、完成動画の確認までを案内します。">
+  <meta name="description" content="ai-video-editを初めて使う方へ。Claude Code導入済みの方向けに、準備から編集・修正まで自然言語で依頼する方法を案内します。">
   <meta name="color-scheme" content="light">
-  <title>はじめての ai-video-edit｜導入・使い方ガイド</title>
+  <title>はじめての ai-video-edit｜Claude Codeに頼む動画編集</title>
   <style>
     :root{--paper:#f6f5ef;--white:#fff;--ink:#172c32;--muted:#52676b;--line:#d9e2de;--green:#087b67;--pale:#e6f3ed;--orange:#bd5228;--gold:#f3cc78;--radius:20px}
     *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}a{color:#086e5d;text-underline-offset:4px}a:hover{color:#093f36}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #d96c32;outline-offset:4px}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3{line-height:1.45;letter-spacing:-.03em}h1{font-size:clamp(36px,4.6vw,60px);font-weight:800;margin-bottom:24px}h2{font-size:clamp(27px,3vw,36px);margin-bottom:16px}h3{font-size:21px;margin-bottom:12px}h4{font-size:17px;margin-bottom:10px}p{margin-bottom:18px}small,.small{font-size:13px;line-height:1.8}ul,ol{padding-left:1.4em}li+li{margin-top:7px}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;overflow-wrap:anywhere}p code,li code,dd code{background:#e8ede8;padding:2px 5px;border-radius:4px}.muted{color:var(--muted)}.nowrap{white-space:nowrap}.skip{position:fixed;left:16px;top:-90px;background:white;padding:12px;z-index:100}.skip:focus{top:10px}
@@ -29,22 +29,22 @@
       <ol>
         <li><a href="#about"><span class="num">01</span>できること</a></li>
         <li><a href="#prepare"><span class="num">02</span>準備するもの</a></li>
-        <li><a href="#install"><span class="num">03</span>インストール</a></li>
+        <li><a href="#install"><span class="num">03</span>準備を依頼する</a></li>
         <li><a href="#first"><span class="num">04</span>最初の動画を作る</a></li>
         <li><a href="#request"><span class="num">05</span>依頼文を作る</a></li>
         <li><a href="#finish"><span class="num">06</span>確認・修正・保存</a></li>
         <li><a href="#next"><span class="num">07</span>2回目からの使い方</a></li>
         <li><a href="#help"><span class="num">08</span>困ったとき</a></li>
       </ol>
-      <p class="nav-note">はじめての方向け<br>Mac / Apple Silicon 標準手順<br><br>確認日：2026年10月30日<br>このHTMLは単体で保存・共有できます。</p>
+      <p class="nav-note">非エンジニア向け<br>Claude Code導入済みの方へ<br>Mac / Apple Silicon 標準<br><br>確認日：2026年10月30日<br>このHTMLは単体で保存・共有できます。</p>
     </nav>
     <main class="content" id="main">
       <section class="hero" aria-labelledby="hero-title">
         <p class="eyebrow">A practical guide to AI video editing</p>
         <h1 id="hero-title">作りたい動画を、<br><span class="accent">言葉で伝える。</span></h1>
-        <p class="lead">ai-video-edit は、AIに日本語で相談しながら使う動画編集ツール集です。素材を用意したら、残したい内容や仕上がりを伝えるところから始めましょう。</p>
-        <div><span class="badge">はじめての導入から完成まで</span><span class="badge">日本語の動画に対応</span><span class="badge">コードの手書きは不要</span></div>
-        <div class="hero-actions"><a class="button" href="#install">導入手順へ進む <span aria-hidden="true">　↓</span></a><a class="button secondary" href="#request">依頼文の例を見る</a></div>
+        <p class="lead">Claude Codeに「この動画を、こう仕上げたい」と伝えてみましょう。ai-video-editの準備からカット・字幕・仕上げまで、日本語で依頼する方法を紹介します。</p>
+        <div><span class="badge">Claude Codeは導入済みでOK</span><span class="badge">日本語の動画に対応</span><span class="badge">コード・コマンド入力は不要</span></div>
+        <div class="hero-actions"><a class="button" href="#install">最初の依頼文へ <span aria-hidden="true">　↓</span></a><a class="button secondary" href="#request">依頼文の例を見る</a></div>
         <div class="hero-strip" aria-label="素材を用意し、AIと相談して、完成動画を書き出す">
           <div class="strip-node"><small>INPUT</small><strong>手元の動画素材</strong></div><span class="strip-arrow" aria-hidden="true">→</span>
           <div class="strip-node"><small>EDIT</small><strong>AIと相談して編集</strong></div><span class="strip-arrow" aria-hidden="true">→</span>
@@ -63,74 +63,68 @@
       </section>
 
       <section class="section" id="prepare">
-        <div class="section-label">02 / BEFORE YOU START</div><h2>準備するものを確認。</h2>
+        <div class="section-label">02 / BEFORE YOU START</div><h2>Claude Codeと、動画を用意。</h2>
+        <p class="section-intro">このガイドは、Claude Codeをインストール済みで、会話できる方に向けたものです。編集に必要な道具の準備は、Claude Codeへ依頼します。</p>
         <div class="grid2">
-          <div class="card"><h3>パソコンと素材</h3><ul class="checklist"><li><strong>Apple SiliconのMac</strong><br><span class="small muted">M1・M2・M3など、Apple製チップ搭載機。「 → このMacについて」で確認できます。</span></li><li><strong>インターネット接続</strong><br><span class="small muted">ツールの導入、AIとの会話、初回の音声認識モデル取得に使います。</span></li><li><strong>編集してよい動画と空き容量</strong><br><span class="small muted">まずは短いMP4がおすすめ。元素材・中間ファイル・完成品を置ける余裕を用意します。</span></li></ul><p class="small muted">この手順はHomebrewがサポートするmacOSを前提にしています。対応OSは<a href="https://brew.sh/">Homebrew公式</a>で確認してください。</p></div>
-          <div class="card"><h3>アカウントと費用</h3><ul class="checklist"><li><strong>Claude Codeを使えるアカウント</strong><br><span class="small muted">対応するClaudeの契約、またはClaude Console等の利用環境が必要です。最新の対象は<a href="https://code.claude.com/docs/en/quickstart">公式ガイド</a>を確認してください。</span></li><li><strong>ツール本体はMITライセンス</strong><br><span class="small muted">ai-video-editの利用料と、AIサービスの利用料金は別です。本体のライセンス料はありません。</span></li><li><strong>標準手順はローカル文字起こし</strong><br><span class="small muted">音声認識をMacで行うため、文字起こしAPIの従量料金はかかりません。Claude Codeの利用料金は別途必要です。</span></li></ul><p class="small muted">公開リポジトリのダウンロードに、GitHubアカウントは必要ありません。</p></div>
+          <div class="card"><h3>用意するもの</h3><ul class="checklist"><li><strong>普段使っているClaude Code</strong><br><span class="small muted">Mac上のファイルを扱える状態で開きます。以下の文章は、そのメッセージ入力欄へ送ります。</span></li><li><strong>Apple SiliconのMacとネット接続</strong><br><span class="small muted">M1・M2・M3などのMacが標準です。分からなければ、最初の依頼でClaude Codeに確認してもらえます。</span></li><li><strong>編集してよい動画と空き容量</strong><br><span class="small muted">最初は短い動画でも大丈夫です。素材がなくても、サンプルで動作を試せます。</span></li></ul></div>
+          <div class="card"><h3>費用と文字起こし</h3><ul class="checklist"><li><strong>本ツールのライセンス料は不要</strong><br><span class="small muted">Claude Codeの利用料金は別途必要です。</span></li><li><strong>音声認識はMac内で行う設定</strong><br><span class="small muted">このガイドでは「ローカル文字起こし」を依頼します。文字起こしAPIの従量料金はかかりません。</span></li><li><strong>使えない環境なら、先に相談</strong><br><span class="small muted">外部の音声認識サービスを使う場合は、音声の送信と料金が発生します。自動で切り替えず、方法を説明してもらいます。</span></li></ul></div>
         </div>
-        <div class="note warm"><strong>「ローカル文字起こし」の範囲</strong><p>音声認識はMac内で動きます。一方、Claude Codeが分析する文字起こしや画像などは、利用するAIサービスへ送信され得ます。外部に渡せない素材は、所属組織の方針と<a href="https://code.claude.com/docs/en/data-usage">Claude Codeのデータ利用方針</a>を確認してから扱ってください。</p></div>
-        <details><summary>Intel Mac・Linux・Windowsを使っている場合</summary><div class="detail"><p>ローカル音声認識のmlx-whisperはApple Silicon向けです。Intel Macは下記セットアップの <code>--with-local</code> を外し、API文字起こし、または既存の文字起こしを利用してください。APIにはOpenAI側の設定と料金が必要で、音声が外部サービスに送信されます。</p><p>Linuxは<a href="https://github.com/mq-org/ai-video-edit#セットアップを自分で行う場合">READMEの手動セットアップ</a>を参照してください。Linuxの確認範囲はテストと合成素材の書き出しで、Windowsは未検証です。このガイドのコマンドをそのままWindowsへ貼り付けないでください。</p></div></details>
+        <div class="note warm"><strong>素材の取り扱いについて</strong><p>音声認識をMac内で行っても、Claude Codeが分析する文字起こしや画像などは、利用するAIサービスへ送信され得ます。外部に渡せない素材は、所属組織の方針と<a href="https://code.claude.com/docs/en/data-usage">Claude Codeのデータ利用方針</a>を確認してから扱ってください。</p></div>
+        <details><summary>Intel Mac・Linux・Windowsを使っている場合</summary><div class="detail"><p>最初の依頼に「私の環境で使えるか確認してください」と添えます。Intel MacやLinuxでは、既存の文字起こしや外部の音声認識サービスを使う方法があります。Windowsは未検証です。Claude Codeから対応範囲と必要な準備を説明してもらってください。</p></div></details>
       </section>
 
       <section class="section" id="install">
-        <div class="section-label">03 / ONE-TIME SETUP</div><h2>最初の1回だけ、道具を準備。</h2>
-        <p class="section-intro">以下は上から順に進めます。すでに導入済みの項目は、動作を確認して次へ進んでください。保存先はホームフォルダ内の <code>projects/ai-video-edit</code> に統一します。</p>
-        <div class="note"><strong>このページの読み方</strong><br>濃い色の「ターミナルに貼る」はMacへの操作指示。薄い緑色の「Claude Codeに送る」はAIへの依頼文です。コピーボタンで本文だけをコピーできます。</div>
-        <article class="step"><span class="step-index">1</span><h3>ターミナルを開く</h3><p><strong>⌘ Command ＋ Space</strong> を押して「ターミナル」と入力し、Returnで開きます。ここにコマンドを貼り付け、Returnを押して実行します。</p><p class="small muted">コマンドは1つの枠ずつ実行してください。文字が流れている間は完了を待ちます。パスワード入力では文字も「●」も表示されません。そのままMacのログインパスワードを入力してReturnを押します。</p></article>
-        <article class="step"><span class="step-index">2</span><h3>Homebrewを用意する</h3><p>Homebrewは、必要な道具をまとめて導入する仕組みです。まず確認します。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 導入済みか確認</span></div><pre><code>brew --version</code></pre></div>
-          <p>バージョン番号が出れば手順3へ。<code>command not found</code> と出た場合は、<a href="https://brew.sh/">公式サイト</a>のインストールコマンドを実行します。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 未導入の場合だけ</span></div><pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre></div>
-          <p><strong>最後に表示される「Next steps」の指示も実行</strong>してください。ターミナルからHomebrewを使えるようにする設定です。開発ツールのインストール画面が出たら、案内に従って完了を待ちます。</p><small class="success">完了の目印：新しいターミナルで brew --version が表示される。</small>
-        </article>
-        <article class="step"><span class="step-index">3</span><h3>Claude CodeとGitを入れる</h3><p>Claude CodeはAIとの会話用、Gitはこのツールの取得と更新用です。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る</span></div><pre><code>brew install git
-brew install --cask claude-code</code></pre></div>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · インストール確認</span></div><pre><code>git --version
-claude --version</code></pre></div>
-          <small class="success">完了の目印：両方のバージョン番号が表示される。</small><p class="small muted">この手順は<a href="https://code.claude.com/docs/en/setup">Claude Code公式のHomebrew導入方法</a>を使用します。別の方法でClaude Codeを導入済みなら、重ねてインストールする必要はありません。</p>
-        </article>
-        <article class="step"><span class="step-index">4</span><h3>ai-video-editをダウンロードする</h3><p>次の2行を実行すると、決まった場所にフォルダが作られます。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る</span></div><pre><code>mkdir -p "$HOME/projects"
-git clone https://github.com/mq-org/ai-video-edit.git "$HOME/projects/ai-video-edit"</code></pre></div>
-          <p class="small muted"><code>$HOME</code> は、あなたのホームフォルダを指します。そのままコピーして使えます。すでに同じフォルダがある場合は削除せず、<a href="#help-existing">困ったとき</a>を確認してください。</p>
-        </article>
-        <article class="step"><span class="step-index">5</span><h3>動画編集の道具をまとめて入れる</h3><p>Apple SiliconのMacでは、次の1行で編集とローカル文字起こしの準備をします。初回はダウンロードが多いため、完了まで待ちます。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · Apple Silicon用</span></div><pre><code>bash "$HOME/projects/ai-video-edit/scripts/setup.sh" --with-local</code></pre></div>
-          <p class="small muted">FFmpeg、Python、文字起こし用ライブラリなどが導入されます。字幕用フォントは本体に同梱されています。音声認識モデルは、最初の文字起こし時に取得されます。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 準備を確認</span></div><pre><code>"$HOME/projects/ai-video-edit/.venv/bin/python" "$HOME/projects/ai-video-edit/scripts/check_env.py"</code></pre></div>
-          <small class="success">完了の目印：「編集の必須項目はOK」と表示される。</small><p class="small muted">ローカル文字起こしを使う場合、OpenAI APIの「任意・未導入」は問題ありません。mlx-whisperが使える状態かも確認してください。</p>
-        </article>
-        <article class="step"><span class="step-index">6</span><h3>このフォルダでClaude Codeを起動する</h3><p>次のコマンドを使うと、編集用のフォルダを作業場所として起動できます。</p>
-          <div class="codebox"><div class="codehead"><span>ターミナルに貼る · 毎回このコマンドで起動</span></div><pre><code>(cd "$HOME/projects/ai-video-edit" &amp;&amp; claude)</code></pre></div>
-          <p>初回は画面の案内に従ってログインします。ブラウザが開いたら認証を済ませ、ターミナルへ戻ります。フォルダの信頼確認が出たら、場所が <code>projects/ai-video-edit</code> であることを確認します。</p><small class="success">完了の目印：Claude Codeで文章を入力できる。</small><p class="small muted">ログインし直すときはClaude Code内で <code>/login</code>、操作案内は <code>/help</code>。詳細は<a href="https://code.claude.com/docs/en/quickstart">公式クイックスタート</a>を参照してください。</p>
-        </article>
+        <div class="section-label">03 / ASK CLAUDE CODE</div><h2>最初は、この文章を送るだけ。</h2>
+        <p class="section-intro">普段使っているClaude Codeを開き、下の依頼文をコピーして送ります。ツールの取得、必要な道具の導入、動作確認までまとめて依頼できます。</p>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 初回の準備</span></div><pre id="setup-prompt">ai-video-editを使って動画を編集したいです。
+https://github.com/mq-org/ai-video-edit
+
+このツールを私のMacで使えるように準備してください。
+私は非エンジニアなので、コードやコマンドの入力を求めず、必要な処理はあなたが実行してください。
+
+まず私のMacで使えるかを確認し、公式の説明とツールの指示書を読んで、必要なものを導入してください。
+保存先はホームフォルダ内の「projects」の中の「ai-video-edit」にしてください。すでにあれば、内容を確認して再利用し、既存のファイルは消さないでください。
+以降は、そのai-video-editフォルダを対象に作業してください。
+文字起こしはMac内で行いたいです。対応していない場合は方法を相談し、外部送信や追加料金のあるサービスへ勝手に切り替えないでください。
+
+私自身の許可やパスワード入力が必要な場合は、理由と画面上の操作を一つずつ案内してください。
+最後に動作を確認し、準備できたことと保存場所を教えてください。
+まだ本番の動画編集は始めず、次に作りたい動画を聞いてください。</pre></div>
+        <div class="grid3">
+          <article class="card"><span class="card-number">YOU · 01</span><h3>文章を送る</h3><p class="small">「コピー」を押し、Claude Codeのメッセージ入力欄に貼り付けて送信します。</p></article>
+          <article class="card"><span class="card-number">CLAUDE CODE · 02</span><h3>準備を任せる</h3><p class="small">Macの状態を調べ、ツールを取得し、編集に必要な道具を整えてもらいます。</p></article>
+          <article class="card"><span class="card-number">TOGETHER · 03</span><h3>完了を確認</h3><p class="small">「準備できました」という案内を待ち、同じ会話で動画編集を依頼します。</p></article>
+        </div>
+        <div class="note"><strong>準備中、本人の操作が必要になることがあります。</strong><br>Macの許可画面や管理者パスワードの入力などは、Claude Codeの説明を確認して操作してください。パスワードは会話に書かず、Macの認証画面へ入力します。初回のダウンロードには時間がかかる場合があります。</div>
+        <details><summary>「コマンドを実行してください」と言われたら</summary><div class="detail"><p>次のように返してください。本人しかできない操作が残る場合は、画面での手順を具体的に案内してもらいます。</p><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る</span></div><pre>コマンドの入力は難しいので、実行できる作業はあなたが行ってください。
+私自身の操作が必要な部分だけ、どの画面で何を押すかを一つずつ教えてください。
+作業を実行できない環境の場合は、その理由と、私のMac上で進めるための方法を説明してください。</pre></div></div></details>
       </section>
 
       <section class="section" id="first">
         <div class="section-label">04 / YOUR FIRST VIDEO</div><h2>素材を渡して、希望を伝える。</h2>
-        <p class="section-intro">ここからはAIとの会話が中心です。編集の設定ファイルはAIが用意します。まずは短いプレビューを見て、字幕とカットのテンポを合わせましょう。</p>
-        <article class="card"><h3>① 動画の場所を伝える</h3><p>Finderで動画を選び、<strong>⌥ Option ＋ ⌘ Command ＋ C</strong> でファイルのパスをコピーします。下の依頼文にある「ここに動画のパス」を、コピーした内容に置き換えてください。</p><p class="small muted">パスはファイルの住所です。例：<code>/Users/あなたの名前/Movies/lesson.mp4</code>。名前だけを伝えるより、どの素材を使うか確実に分かります。元動画はそのまま保管してください。</p></article>
-        <h3 style="margin-top:28px">② 最初の依頼を送る</h3>
-        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 1本仕上げの例</span></div><pre>このプロジェクトのCLAUDE.mdとreferences/workflow.mdを読んで、動画編集を進めてください。
+        <p class="section-intro">準備が終わったら、そのまま同じ会話で依頼します。まずは短いプレビューを見て、字幕とカットのテンポを合わせましょう。</p>
+        <article class="card"><h3>① 動画の場所を伝える</h3><p>「ダウンロードフォルダにある『講座.mp4』を使いたいです」のように、<strong>保存場所とファイル名</strong>を伝えます。場所が分からなければ、Claude Codeに探し方を案内してもらえます。</p><p class="small muted">正確な場所をコピーしたいときは、Finderで動画を選び、Option＋Command＋Cを押して会話へ貼り付けます。これはファイルの住所を伝える操作です。元動画はそのまま保管してください。</p></article>
+        <h3 style="margin-top:28px">② 最初の依頼を送る</h3><p class="small muted">下の例の「ダウンロードフォルダ」「講座.mp4」は、自分の素材に合わせて変えてください。</p>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 1本仕上げの例</span></div><pre>準備したai-video-editを使い、ツールの編集方針に沿って動画を作ってください。
 
-素材は「ここに動画のパス」です。
+素材は、ダウンロードフォルダにある「講座.mp4」です。
 30分程度の講座を、横型の1本の動画に整えたいです。
 説明と実演は省かず、言い直しと不要な長い間をカットしてください。
 白文字のシンプルな字幕を付け、完成尺は自然な長さにしてください。
-文字起こしはローカルで行います。APIへの切り替えは事前に相談してください。
+文字起こしはローカルで行います。外部の文字起こしサービスを使う場合は、事前に相談してください。
 
 最初に、不足している希望をまとめてヒアリングしてください。
 編集計画を確認した後、15〜30秒のプレビューを見てから全編を作りたいです。
-完成品はoutput/内に案件用フォルダを作って保存し、最後に保存先を教えてください。</pre></div>
+完成品は案件ごとにフォルダを分けて保存し、最後にFinderで開いてください。</pre></div>
         <h3 style="margin-top:28px">③ 質問に答え、プレビューを確認する</h3>
         <ol class="flow"><li><strong>ヒアリング</strong><span>用途、視聴者、長さ、字幕などを確認。</span></li><li><strong>素材を分析</strong><span>音声を文字起こしし、映像の状態を調べる。</span></li><li><strong>編集計画</strong><span>使う区間、削る理由、字幕を整理。</span></li><li><strong>プレビュー</strong><span>短い試作で字幕とテンポを合わせる。</span></li><li><strong>本書き出し</strong><span>全編を作成し、完成品の場所を案内。</span></li></ol>
         <p>分からない項目には「おすすめを提案して」「字幕の見た目はお任せ」と答えて大丈夫です。残したい箇所は「手元の実演は倍速にせず全部残す」のように具体的に伝えます。</p>
         <div class="note"><strong>AIから操作の許可を求められたら</strong><br>対象の素材や保存先、実行内容が依頼に沿っているか確認します。意味が分からなければ「この操作をすると何が変わりますか」と聞けます。文字起こしや書き出しには、素材の長さとMacの性能に応じて時間がかかります。</div>
-        <details><summary>まだ素材がないので、動作だけ試したい</summary><div class="detail"><p>次の依頼なら、無地の映像・テスト音・架空の字幕で書き出しを試せます。音声認識のテストではありません。</p><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る</span></div><pre>CLAUDE.mdとreferences/workflow.mdを読んでください。
-scripts/make_demo.pyでデモ素材を作り、1本仕上げの編集計画を作成・確認してください。
+        <details><summary>まだ素材がないので、動作だけ試したい</summary><div class="detail"><p>次の依頼なら、無地の映像・テスト音・架空の字幕で書き出しを試せます。音声認識のテストではありません。</p><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る</span></div><pre>準備したai-video-editを使ってください。
+まだ自分の素材がないので、付属の仕組みで動作確認用のサンプル動画を作ってください。
 架空の字幕を付けた15秒のプレビューを書き出し、保存先を教えてください。
-デモには既存の文字起こしがあるので、音声認識やAPI送信は不要です。</pre></div></div></details>
+サンプルに付属する字幕データを使い、外部の音声認識サービスへは送らないでください。</pre></div></div></details>
       </section>
 
       <section class="section" id="request">
@@ -139,7 +133,7 @@ scripts/make_demo.pyでデモ素材を作り、1本仕上げの編集計画を�
         <div class="builder">
           <form id="brief-form">
             <div class="form-grid">
-              <div class="field full"><label for="source">動画のパス</label><input id="source" type="text" placeholder="Finderでコピーしたパスを貼り付け" autocomplete="off"></div>
+              <div class="field full"><label for="source">動画の保存場所と名前</label><input id="source" type="text" placeholder="例：ダウンロードフォルダの講座.mp4" autocomplete="off"></div>
               <div class="field"><label for="style">作りたい動画</label><select id="style"><option value="single">1本に整える</option><option value="shorts">複数の縦型ショート</option><option value="extract">指定した区間を抜き出す</option></select></div>
               <div class="field"><label for="audience">用途・見る人</label><input id="audience" type="text" placeholder="例：初めて学ぶ人向けの講座"></div>
               <div class="field"><label for="shape">画面の形</label><select id="shape"><option value="横型（16:9）">横型（16:9）</option><option value="縦型（9:16）">縦型（9:16）</option><option value="正方形（1:1）">正方形（1:1）</option></select></div>
@@ -148,24 +142,24 @@ scripts/make_demo.pyでデモ素材を作り、1本仕上げの編集計画を�
               <div class="field"><label for="length">本数・長さ・使う区間</label><input id="length" type="text" placeholder="例：1本、自然な長さ / 3本、各60秒"></div>
               <div class="field full"><label for="keep">残したい内容・正しい用語など</label><textarea id="keep" placeholder="例：実演は全部残す。「エーアイ」は「AI」と表記。"></textarea></div>
             </div>
-            <p class="small" style="margin:16px 0 0">このフォームはApple Siliconでのローカル文字起こしを指定します。違う環境なら、送る前にその行を変更してください。Type-Tは縦型ショート向けのため、組み合わせは自動で調整します。</p>
+            <p class="small" style="margin:16px 0 0">このフォームはMac内での文字起こしを希望する依頼文を作ります。利用できるかは、最初の準備でClaude Codeに確認してもらってください。Type-Tは縦型ショート向けのため、組み合わせは自動で調整します。</p>
           </form>
           <noscript><p>JavaScriptが無効のため、下の例文を直接編集して使ってください。</p></noscript>
-          <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · あなたの依頼文</span></div><pre id="generated-prompt" tabindex="0">CLAUDE.mdとreferences/workflow.mdを読んで、動画編集を進めてください。
-素材は「ここに動画のパス」です。1本に整えたいです。
+          <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · あなたの依頼文</span></div><pre id="generated-prompt" tabindex="0">準備したai-video-editを使って、動画を編集してください。
+素材は「ここに動画の保存場所と名前」です。1本に整えたいです。
 横型で、白文字のシンプルな字幕を付けてください。
 長い間と言い直しを整理し、説明は残してください。
-文字起こしはローカルで行い、APIへの切り替えは事前に相談してください。
+文字起こしはローカルで行い、外部の文字起こしサービスを使う場合は、事前に相談してください。
 まず不足する希望をヒアリングし、短いプレビューを見てから全編を作ってください。
-完成品はoutput/内に案件用フォルダを作って保存し、保存先を教えてください。</pre></div>
+完成品は案件ごとにフォルダを分けて保存し、最後にFinderで開いてください。</pre></div>
         </div>
-        <details><summary>ショートを依頼する例文も見たい</summary><div class="detail"><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 見どころを3本に</span></div><pre>CLAUDE.mdとreferences/workflow.mdを読んでください。
-素材「ここに動画のパス」から、初めて見る人向けの縦型ショートを3本作りたいです。
+        <details><summary>ショートを依頼する例文も見たい</summary><div class="detail"><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 見どころを3本に</span></div><pre>準備したai-video-editを使ってください。
+素材「ここに動画の保存場所と名前」から、初めて見る人向けの縦型ショートを3本作りたいです。
 1本30〜60秒を目安に、結論まで1本で理解できる話題を選んでください。
 1080×1920、テレビ風のType-Tテロップで仕上げたいです。
 文字起こしはローカルで行います。最初に希望を確認し、候補の話題と切り出す理由を提案してください。
 まず代表1本のプレビューを見てから、残りを制作してください。
-完成品はoutput/内に保存し、保存先を教えてください。</pre></div></div></details>
+完成品はまとめて保存し、最後にFinderでフォルダを開いてください。</pre></div></div></details>
       </section>
 
       <section class="section" id="finish">
@@ -179,44 +173,42 @@ scripts/make_demo.pyでデモ素材を作り、1本仕上げの編集計画を�
 ・「エーアイ」は「AI」に直してください。
 いまの版は残して、新しいファイル名でプレビューを作ってください。</pre></div>
         <p class="small muted">時刻は「元素材の時刻」か「完成動画の時刻」かを添えると確実です。問題がなければ「この仕上がりで全編を書き出してください」と伝えます。</p>
-        <article class="card"><h3>保存されるファイル</h3><dl class="files"><dt>MP4</dt><dd>再生・共有に使う完成動画。<code>*.preview.mp4</code> は確認用の試作です。</dd><dt>SRT / ASS</dt><dd>1本仕上げで字幕を有効にしたときの字幕ファイル。SRTは字幕の別納品、ASSは表示設定を含む字幕データです。</dd><dt>report.json</dt><dd>1本仕上げの検査レポート。通常はAIが内容を確認します。</dd><dt>data/</dt><dd>文字起こし、編集計画、中間データなど。再編集に使います。</dd><dt>output/</dt><dd>このガイドで指定する完成品の保存先。案件名ごとにまとめます。</dd></dl></article>
+        <article class="card"><h3>受け取るもの</h3><dl class="files"><dt>確認用の試作</dt><dd>字幕やテンポを確かめる短い動画です。見てから修正を頼めます。</dd><dt>完成動画</dt><dd>再生・共有に使うMP4ファイルです。Claude Codeが保存場所を案内します。</dd><dt>字幕ファイル</dt><dd>必要な場合は、字幕を別ファイルでも受け取れます。「字幕も別に欲しい」と伝えてください。</dd><dt>再編集のデータ</dt><dd>文字起こしや編集内容の記録も保存されます。あとで直す予定があれば、素材と一緒に残しておきます。</dd></dl></article>
         <p class="note"><strong>最後は保存先を確認。</strong><br>Finderで場所が分からなければ「完成品のフォルダをFinderで開いて」とAIに頼めます。制作データは公開GitHubへ自動保存されません。必要なものは自分のバックアップ先へコピーしてください。YouTubeなどへの投稿は、完成後に別途行います。</p>
       </section>
 
       <section class="section" id="next">
-        <div class="section-label">07 / NEXT TIME</div><h2>2回目からは、起動して相談。</h2>
-        <p>インストールを繰り返す必要はありません。ターミナルで次を実行し、新しい素材と希望を伝えます。</p>
-        <div class="codebox"><div class="codehead"><span>ターミナルに貼る · Claude Codeを起動</span></div><pre><code>(cd "$HOME/projects/ai-video-edit" &amp;&amp; claude)</code></pre></div>
-        <p>以前の会話を続ける場合は、Claude Code内で <code>/resume</code> を入力して会話を選びます。新しい会話で再編集する場合は、案件名や編集計画の場所を伝えてください。</p>
-        <details><summary>ツールを最新版へ更新したい</summary><div class="detail"><p>進行中の書き出しが終わってから、別のターミナルで実行します。このガイドのHomebrew方式で導入したClaude Codeも更新できます。</p><div class="codebox"><div class="codehead"><span>ターミナルに貼る · 更新</span></div><pre><code>git -C "$HOME/projects/ai-video-edit" pull --ff-only
-brew upgrade claude-code
-bash "$HOME/projects/ai-video-edit/scripts/setup.sh" --with-local</code></pre></div><p>ローカルの変更があってGitが止まった場合は、エラーをAIに見せてください。既存フォルダを消したり、変更を強制的に破棄したりする必要はありません。</p></div></details>
+        <div class="section-label">07 / NEXT TIME</div><h2>次も、日本語で続きを頼む。</h2>
+        <p>準備をしたClaude Codeの会話を開き、新しい素材や修正の希望を伝えます。新しい会話から始める場合は、保存済みのツールを使うように依頼してください。</p>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 次の動画を作る</span></div><pre>以前準備したai-video-editを使って、新しい動画を編集したいです。
+ホームフォルダ内の「projects」の中にある「ai-video-edit」を確認し、そのフォルダを対象に作業してください。
+既存の素材や完成動画は残してください。
+今回の素材と仕上がりについて、最初にヒアリングしてください。</pre></div>
+        <p class="small muted">準備のときに別の保存場所を選んだ場合は、その場所を伝えてください。以前の動画を直すときは「前に作った講座動画を修正したい」のように、案件名や完成品の場所を添えます。</p>
+        <details><summary>ツールを最新版へ更新したい</summary><div class="detail"><p>動画の書き出しが終わってから、次の文章を送ります。</p><div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 更新を頼む</span></div><pre>ai-video-editを最新版へ更新してください。
+進行中の編集がないことを確認し、素材、完成動画、私の設定や変更を残したまま進めてください。
+変更がぶつかる場合は勝手に削除せず、対応を相談してください。
+更新後に動作を確認し、結果を教えてください。</pre></div></div></details>
       </section>
 
       <section class="section" id="help">
-        <div class="section-label">08 / TROUBLESHOOTING</div><h2>つまずいたら、ここを確認。</h2>
-        <p class="section-intro">エラーが出ても、最初からやり直す前に原因を確認できます。画面の文章をそのままAIへ伝えると、対処しやすくなります。</p>
-        <details><summary>brew: command not found と出る</summary><div class="detail"><p>Homebrewのインストール末尾にある「Next steps」を実行したか確認してください。新しいターミナルを開き直して <code>brew --version</code> を試します。まだ使えなければ、<a href="https://docs.brew.sh/Installation">公式の導入案内</a>とインストール時の表示を確認します。</p></div></details>
-        <details><summary>git / claude: command not found と出る</summary><div class="detail"><p>手順3がエラーなく完了したか確認し、新しいターミナルでバージョン確認をやり直します。Homebrew自体が使えない場合は、先にその問題を解決してください。Claude Codeのログインと、コマンドのインストールは別の手順です。</p></div></details>
-        <details id="help-existing"><summary>「フォルダが既にある」「No such file」と出る</summary><div class="detail"><p>すでに取得済みなら、同じ場所への <code>git clone</code> は不要です。Finderの「移動 → フォルダへ移動」で <code>~/projects/ai-video-edit</code> を開き、README.mdやscriptsフォルダがあるか確認します。</p><p>別の場所へ取得した場合は、コマンド内の保存先をその場所に合わせます。名前が同じでも中身が別のフォルダなら、削除せず、別名で取得する方法を相談してください。</p></div></details>
-        <details><summary>ローカル文字起こしが使えない</summary><div class="detail"><p>Apple SiliconのMacか、<code>setup.sh --with-local</code> が完了したかを確認します。手順5の環境チェック結果をAIに伝えてください。Intel MacやLinuxではAPIまたは既存の文字起こしを選びます。APIへの切り替えには外部送信と料金が伴います。</p></div></details>
-        <details><summary>文字起こし・書き出しが終わらないように見える</summary><div class="detail"><p>初回の文字起こしではモデルのダウンロードが入ります。長い素材や高解像度の動画は処理にも時間がかかります。「現在の処理とログを確認して、進行しているか教えて」とAIに頼んでください。処理中に同じ書き出しを重複して開始しないようにします。</p></div></details>
-        <details><summary>素材が見つからない・読み取れない</summary><div class="detail"><p>Finderで動画を選び直し、Option＋Command＋Cでパスをコピーします。クラウド上にしかないファイルは、まずMacへダウンロードしてください。読み取り権限の確認が出た場合は対象フォルダを確認します。</p></div></details>
-        <details><summary>「未確認の計画」「出力が既に存在する」で止まる</summary><div class="detail"><p>AIに「カット・字幕・出力設定を確認したうえで計画を確定して」と伝えます。確認済みの印だけを変更する必要はありません。出力済みなら「前の版を残して、v2という別名で書き出して」と依頼できます。</p></div></details>
-        <details><summary>字幕の誤字やカットの違和感を直したい</summary><div class="detail"><p>正しい表記と、どの動画の何分何秒かを伝えます。「この間は実演を見せる時間なので残す」「『株式会社サンプル』が正式名称」のような情報が有効です。音声認識も編集判断も、素材ごとの確認が必要です。</p></div></details>
-        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · エラーを相談</span></div><pre>ai-video-editの「ここに手順名」で止まりました。
-環境は「Macのチップ名 / macOSのバージョン」です。
-実行した内容とエラーを下に貼ります。
-原因を調べ、既存の素材や編集データを残したまま、次に行う操作を教えてください。
+        <div class="section-label">08 / ASK FOR HELP</div><h2>困ったときも、そのまま相談。</h2>
+        <p class="section-intro">専門用語を理解したり、設定ファイルを直したりする必要はありません。今起きていることを、同じClaude Codeの会話で伝えてください。</p>
+        <details><summary>準備の途中で止まった・エラーが出た</summary><div class="detail"><p>「準備が途中で止まっています。原因を調べて、続きの作業をしてください」と伝えます。別の画面にエラーが出ている場合は、その文章を添えてください。</p></div></details>
+        <details id="help-existing"><summary>「すでにフォルダがあります」と言われた</summary><div class="detail"><p>「以前のai-video-editか確認し、使えるならそのまま使ってください。中の素材や設定は消さないでください」と伝えます。別のものなら、保存先を相談します。</p></div></details>
+        <details><summary>文字起こし・書き出しが長くかかっている</summary><div class="detail"><p>「いま何の処理をしていますか。止まっていないか確認してください」と聞けます。初回の文字起こしは、音声認識に必要なデータの取得にも時間がかかります。同じ処理を重複して始めず、状況を確認してもらいます。</p></div></details>
+        <details><summary>素材が見つからないと言われた</summary><div class="detail"><p>「動画はMacのダウンロードフォルダにある『講座.mp4』です」のように、保存場所と名前を伝えます。候補が複数あるときは、どれを使うか確認してもらってください。クラウド上だけにある素材は、Macへの保存方法を案内してもらいます。</p></div></details>
+        <details><summary>許可を求められたが、内容が分からない</summary><div class="detail"><p>「この操作を許可すると何が変わりますか。動画編集に必要な理由を、簡単に説明してください」と聞いてから判断できます。</p></div></details>
+        <details><summary>字幕やカットを直したい・完成品が見つからない</summary><div class="detail"><p>「完成動画の2分10秒の字幕を直して」「この実演は全部残して」「完成品のフォルダをFinderで開いて」のように頼んでください。再書き出しのときは、前の版を残すように伝えると見比べられます。</p></div></details>
+        <div class="codebox prompt"><div class="codehead"><span>Claude Codeに送る · 困ったときの依頼文</span></div><pre>ai-video-editで、次のところで困っています。
+「ここに、今起きていることを書いてください」
 
-【実行した内容】
-ここに貼り付け
-
-【エラー】
-ここに貼り付け</pre></div>
-        <p class="small muted">APIキーやパスワードは貼り付けないでください。公開の<a href="https://github.com/mq-org/ai-video-edit/issues">GitHub Issues</a>へ相談する場合は、個人情報や非公開の文字起こしを取り除いてください。</p>
+原因を確認し、できる作業はあなたが実行して解決してください。
+既存の素材や編集データは残してください。
+コードやコマンドの入力は求めず、私自身の操作が必要な部分だけ、画面上の手順を一つずつ教えてください。</pre></div>
+        <p class="small muted">パスワードや秘密のキーは会話に貼り付けないでください。公開の<a href="https://github.com/mq-org/ai-video-edit/issues">GitHub Issues</a>へ相談する場合は、個人情報や非公開の文字起こしを取り除いてください。</p>
       </section>
-      <footer class="footer"><p><strong>ai-video-edit / はじめての導入・使い方ガイド</strong><br>2026年10月30日確認 · コード・本ガイド：MIT / 同梱フォント：各OFL<br>このページはHTML単体で表示できます。コピー・依頼文作成はブラウザ内で動作します。</p><p><a href="https://github.com/mq-org/ai-video-edit">リポジトリ</a> · <a href="https://github.com/mq-org/ai-video-edit/blob/main/README.md">README</a><br><a href="https://github.com/mq-org/ai-video-edit/blob/main/references/workflow.md">詳しい制作フロー</a> · <a href="#main">ページの先頭へ ↑</a></p></footer>
+      <footer class="footer"><p><strong>ai-video-edit / 日本語で頼む・使い方ガイド</strong><br>2026年10月30日確認 · コード・本ガイド：MIT / 同梱フォント：各OFL<br>Claude Code導入済みの方向け。依頼文のコピー・作成はブラウザ内で動作します。</p><p><a href="https://github.com/mq-org/ai-video-edit">リポジトリ</a> · <a href="https://github.com/mq-org/ai-video-edit/blob/main/README.md">README</a><br><a href="https://github.com/mq-org/ai-video-edit/blob/main/references/workflow.md">詳しい制作フロー</a> · <a href="#main">ページの先頭へ ↑</a></p></footer>
     </main>
   </div>
   <div class="toast" role="status" aria-live="polite" id="toast"></div>
@@ -248,9 +240,9 @@ bash "$HOME/projects/ai-video-edit/scripts/setup.sh" --with-local</code></pre></
       if (event && event.target === shape && shape.value !== '縦型（9:16）' && style.value === 'shorts') { shape.value = '縦型（9:16）'; notify('縦型ショートは9:16で作成します。'); }
       const styles = {single:'1本の見やすい動画に整えたいです。',shorts:'見どころを選び、複数の縦型ショートにしたいです。',extract:'指定する区間を抜き出して、1本の動画にしたいです。'};
       const subtitles = {simple:'白文字のシンプルな字幕を付けてください。',typet:'テレビ風のType-Tテロップを付けてください。',sidecar:'字幕は映像に焼き込まず、SRTを別ファイルで納品してください。',none:'字幕は付けません。'};
-      const lines = ['このプロジェクトのCLAUDE.mdとreferences/workflow.mdを読んで、動画編集を進めてください。','',`素材は「${$('source').value.trim() || 'ここに動画のパス'}」です。`,styles[style.value],`用途・見る人：${$('audience').value.trim() || '最初に相談して決めたいです。'}`,`画面：${shape.value}。`,subtitles[captions.value],`カット方針：${$('pace').value}。`,`本数・長さ・使用区間：${$('length').value.trim() || (style.value === 'extract' ? '使う区間の開始・終了時刻を、最初に確認してください。' : style.value === 'shorts' ? '候補を提案し、本数を確認してください。1本30〜90秒が目安です。' : '1本。内容を保った自然な長さで。')}`];
+      const lines = ['準備したai-video-editを使い、ツールの編集方針に沿って動画を作ってください。','',`素材は「${$('source').value.trim() || 'ここに動画の保存場所と名前'}」です。`,styles[style.value],`用途・見る人：${$('audience').value.trim() || '最初に相談して決めたいです。'}`,`画面：${shape.value}。`,subtitles[captions.value],`カット方針：${$('pace').value}。`,`本数・長さ・使用区間：${$('length').value.trim() || (style.value === 'extract' ? '使う区間の開始・終了時刻を、最初に確認してください。' : style.value === 'shorts' ? '候補を提案し、本数を確認してください。1本30〜90秒が目安です。' : '1本。内容を保った自然な長さで。')}`];
       if ($('keep').value.trim()) lines.push(`残したい内容・表記など：${$('keep').value.trim()}`);
-      lines.push('','文字起こしはローカルで行います。APIへの切り替えは事前に相談してください。','最初に不足している希望をまとめてヒアリングしてください。','編集計画を確認した後、' + (style.value === 'shorts' ? '代表1本のプレビューを見てから、残りを制作してください。' : '15〜30秒のプレビューを見てから全編を作ってください。'),'完成品はoutput/内に案件用フォルダを作って保存し、最後に保存先を教えてください。');
+      lines.push('','文字起こしはローカルで行います。外部の文字起こしサービスを使う場合は、事前に相談してください。','最初に不足している希望をまとめてヒアリングしてください。','編集計画を確認した後、' + (style.value === 'shorts' ? '代表1本のプレビューを見てから、残りを制作してください。' : '15〜30秒のプレビューを見てから全編を作ってください。'),'完成品は案件ごとにフォルダを分けて保存し、最後にFinderで開いてください。');
       $('generated-prompt').textContent = lines.join('\n');
     }
     $('brief-form').addEventListener('input', updateBrief);
