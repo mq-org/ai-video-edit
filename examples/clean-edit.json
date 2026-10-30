@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "reviewed": false,
+  "source": "../data/source/tutorial.mp4",
+  "transcript": "../data/transcripts/tutorial/whisper_verbose.json",
+  "output": "../output/tutorial/edited.mp4",
+  "brief": {
+    "mode": "clean",
+    "goal": "説明の順序を保ち、言い直し1箇所を除いて字幕付きの1本にする",
+    "note": "架空の60秒素材の記入例。実素材に合わせて時刻と字幕を変更してください"
+  },
+  "segments": [
+    {"start": 0.0, "end": 18.0},
+    {"start": 22.0, "end": 60.0}
+  ],
+  "removed": [
+    {"start": 18.0, "end": 22.0, "reason": "言い直し前の未完の文（記入例）"}
+  ],
+  "video": {"width": 1920, "height": 1080, "fit": "contain", "fps": 30},
+  "subtitle": {"enabled": true, "max_chars": 26, "font_size": 58, "margin_bottom": 70},
+  "audio": {"channel": "auto", "loudness": -14}
+}
