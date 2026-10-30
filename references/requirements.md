@@ -85,3 +85,14 @@ JSON計画は素材時刻を基準とし、採用区間の順序に従って出�
 - コピー後のクリップボード本文、フォームの選択連動、字幕別納品の依頼文、入力をHTMLとして実行しないこと、JavaScriptエラーがないことを確認。
 
 今回の追加は資料のみ。新規Macでの導入全工程や各OS・各ブラウザでの実動検証を行ったものではない。検証画像・補助スクリプトはGit管理外の `screenshots/` に保存。
+
+### GitHub Pagesでのガイド公開
+
+2026-10-30、一般公開版・導入資料・Web公開を含む合意範囲は**約100%**。公開後の動作確認まで完了し、残タスクはない。
+
+- 公開URL: https://mq-org.github.io/ai-video-edit/ 。認証なしで閲覧可能。HTTPSを強制。
+- GitHub Pagesの公開元は `main` ブランチの `/docs`（Deploy from a branch）。`docs/.nojekyll` によりHTMLをそのまま配信する。`docs/index.html` を更新してmainへpushすると自動反映される。
+- READMEとリポジトリのWebsite欄から公開ガイドへリンク。公開範囲は `docs/` 内のガイドで、動画編集ツールをWeb上で実行する構成ではない。
+- Pagesのビルド・デプロイ成功を確認: https://github.com/mq-org/ai-video-edit/actions/runs/40994556446 。同コミットの既存CIも成功。
+- 公開URLがHTTP 200を返し、取得したHTMLがローカルの原本とバイト単位で一致。ログイン情報のないChromeでPC・モバイル表示、コピー内容、依頼文フォーム、ページ内リンク、JavaScriptエラーなしを確認。
+- 公開設定を再現する場合は、GitHubのSettings → Pagesで、SourceをDeploy from a branch、Branchをmain、Folderを/docsに指定する。
