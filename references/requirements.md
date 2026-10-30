@@ -38,7 +38,7 @@ JSON計画は素材時刻を基準とし、採用区間の順序に従って出�
 - BGM・効果音の追加、複数素材の統合、複雑な合成、自動の話者追尾は標準機能に含めない。
 - 語の正誤や発言の意味をスクリプト単独で確定しない。無音検出の精度は収録条件に依存する。
 - 日本語の発話を中心に設計しており、多言語の文字起こし・字幕組版は検証範囲外。
-- ローカル文字起こしはApple Silicon向け。その他の環境ではAPIまたは既存の文字起こしを使用する。主な実動確認はmacOSで行う。LinuxのCIはユニットテストと合成素材の書き出しが対象で、実素材を含む全機能の検証ではない。Windowsは未検証。
+- 標準のローカル文字起こしはApple Silicon向け。その他の環境ではAPIまたは形式を合わせた既存の文字起こしが候補となるが、導入環境の調整も必要。現在のAPIが使う `whisper-1` は2027-02-26提供終了予定。詳細は末尾の互換性調査を参照。主な実動確認はmacOSで行う。LinuxのCIはユニットテストと合成素材の書き出しが対象で、実素材を含む全機能の検証ではない。Intel Mac・Windows・WSL2は実機未検証。
 - 元音声の強い反響・雑音・音割れを自動で修復する機能はない。
 - SNSへの投稿・外部共有は標準の制作フローに含めない。
 
@@ -108,3 +108,50 @@ JSON計画は素材時刻を基準とし、採用区間の順序に従って出�
 - 素材の指定は保存場所と名前で伝える方式を基本とし、フォームの入力例・生成文も統一。READMEの一般向け入口とCLAUDE.mdも整合させた。
 - Chromeで幅1440・1024・768・390・320px、コピー内容、依頼文フォーム、ページ内リンク、JavaScriptエラーなしを確認。ガイドにコード表示要素やコマンド用のコピー枠が残っていないことも検査。
 - Pagesの反映成功を確認: https://github.com/mq-org/ai-video-edit/actions/runs/40996317467 。公開URLがHTTP 200を返し、配信HTMLが改訂版の原本とバイト単位で一致。
+
+### Intel Mac・Windows互換性の調査（2026-10-30）
+
+今回は実装と公式資料の調査のみ。OS対応の追加実装、Intel Mac・Windows・WSL2での実動確認、外部APIへの音声送信は行っていない。一般公開版・ガイド・Web公開の合意範囲は約100%を維持し、追加依頼の互換性調査も完了。各OSの正式対応は未実装・未検証の追加開発であり、今回の調査完了と区別する。
+
+#### 共通して使える可能性のある部分
+
+- カット・結合・字幕・書き出しはFFmpegの `libx264`・AAC・libassを使い、Apple専用のGPU処理に依存しない。字幕フォントも同梱。必要なFFmpeg機能とPython依存がそろえば移植可能な構成。ただしCPU性能、解像度、モデルによる所要時間の差は未測定。
+- 自動の間カット案と通常の自動字幕には、単語ごとの文字列・開始秒・終了秒を持つ `words` が必要。通常の文章やSRTをそのまま渡す入口はない。別ツールの出力を利用する場合は、この形式への変換が必要。字幕と採用区間を別途作る方法はあるが、自動カット候補生成と同等ではない。
+
+#### Intel Mac
+
+- `requirements-local.txt` と `scripts/check_env.py` がローカル文字起こしをDarwin/arm64に限定。既定のmlx-whisper経路とMLXを使う認識抜け再処理は利用できない。MLX本体の他OS対応と、本リポジトリの対応範囲を混同しない。
+- `scripts/setup.sh` の基本環境導入はmacOSを許可し、Apple Silicon制限はローカル文字起こし付きの場合に適用。対応するPython・FFmpeg等が入れば編集環境は構築可能な設計。ただし現在HomebrewではIntel macOSがTier 3で、新しいバイナリ提供も縮小されている。OSと依存パッケージに応じて導入経路を確認する必要がある。
+- 現行コードでの代替は明示的に選択したAPI文字起こし、または形式を整えた既存文字起こし。長期的にはCPUで動く別エンジンの追加が適する。
+
+#### Windowsネイティブ
+
+- `scripts/setup.sh` はmacOS以外を拒否する。Git Bashを入れるだけでは使えない。
+- `scripts/_venv.py` の自動切り替え先は `.venv/bin/python` 固定。Windowsの `.venv/Scripts/python.exe` を検出しない。正しいPythonで直接実行する回避策はあるが、導入フローの対応が必要。
+- `scripts/typet_shorts.py` はフォントのシンボリックリンクを作り、Windowsの権限によって失敗し得る。長尺編集と同様にコピーする対応が候補。
+- `scripts/plan_edit.py` の相対パス生成は素材とプロジェクトが別ドライブの場合に失敗し得る。同一ドライブへ配置するか、絶対パスへのフォールバックが必要。
+- Type-T・継ぎ目検査の一部JSON読込は文字コードを明示していない。日本語WindowsのPython設定による文字化け・読込失敗を防ぐため、UTF-8指定と検証が必要。
+
+#### Windowsでの候補：WSL2
+
+既存のLinux CIとUnix系パスの前提から、Windows内にLinux環境を用意するWSL2が現実的な第一候補。ただし推奨は実装調査からの判断であり、動作保証ではない。
+
+- Python・FFmpeg・仮想環境と編集の実行をLinux側へそろえ、素材・作業ファイルもLinux側へ置く。Claude Codeから同じ環境を操作する。Windows側と混在させない。
+- WSL2でもMac専用の `setup.sh` は使えず、Linux用の導入が必要。既定のmlx-whisper経路も対象外。
+- Windows標準の管理者承認・再起動等が必要になる場合は本人に画面操作を案内し、コマンド入力を利用者の前提にしない。
+- Windowsについての候補は主にIntel/AMDの64bit環境。ARM版Windowsは別途依存パッケージを確認する。
+
+#### 音声認識の代替と推奨
+
+1. **既存APIを暫定利用**：現行実装は `whisper-1` 固定で、音声の外部送信・API料金・キーが必要。2026-08-26の公式告知で2027-02-26廃止予定。単語時刻や応答形式も必要なため、後継モデルへの名前変更だけで互換になると扱わない。`--model` はローカル用でAPIモデルの変更にはならない。
+2. **faster-whisperを追加**：CPUで処理でき、対応NVIDIA GPUでは高速化が候補。単語時刻も出力できる。文字起こしの音声を外部送信せずに済み、文字起こしAPI料金は不要。ただしモデル取得、処理時間、メモリーは必要で、Claude Code側の利用条件は別。本リポジトリの形式へ接続する追加実装と日本語の品質確認が必要。インストールだけでは現在の `local` が切り替わらない。
+3. **既存文字起こしを変換**：既に単語時刻があれば比較的小さな対応で利用可能。単語時刻がない文章・SRTでは時刻合わせ等の追加処理が必要。
+
+一般公開版の拡張案としては、Apple Siliconの既存方式を維持し、Intel MacとWindows/WSL2向けにfaster-whisperを追加する方針を推奨する。追加開発の優先順は、音声認識の接続、OS別導入・診断とガイド更新、実環境での文字起こしから字幕動画までの検証。Windowsネイティブ対応は、WSLを使えない利用者の必要性に応じて範囲を決める。
+
+公式資料（2026-10-30確認）:
+
+- [OpenAI APIの廃止予定](https://developers.openai.com/api/docs/deprecations)・[文字起こしと単語時刻](https://developers.openai.com/api/docs/guides/speech-to-text)
+- [Homebrewの対応区分](https://docs.brew.sh/Support-Tiers)
+- [faster-whisperのCPU・GPU処理と単語時刻](https://github.com/SYSTRAN/faster-whisper)・[CTranslate2の対応OS](https://opennmt.net/CTranslate2/installation.html)
+- [WSLの導入要件](https://learn.microsoft.com/en-us/windows/wsl/install)・[WSLでのファイル配置](https://learn.microsoft.com/en-us/windows/wsl/filesystems)
